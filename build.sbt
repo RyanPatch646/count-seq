@@ -6,7 +6,8 @@ run / javaOptions += "-Xmx12G"
 run / fork := true
 run / connectInput := true
 ThisBuild / javacOptions ++= Seq("-source", "17", "-target", "17")
-lazy val root = (project in file("."))
+
+lazy val app = (project in file("app"))
   .settings(
-    name := "CountSeq",
+    assembly / mainClass := Some("app.App")
   )
