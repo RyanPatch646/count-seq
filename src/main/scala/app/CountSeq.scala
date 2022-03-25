@@ -4,11 +4,6 @@ import scala.collection.immutable.ArraySeq.unsafeWrapArray
 
 trait CountSeq {
 
-  val sortOrder: Ordering[(String, Int)] = {
-    case ((_, count1), (_, count2)) =>
-      Integer.compare(count1, count2)
-  }
-
   // count every unique seq of arbitrary length
   def countSequences(seq: String, minSeqLength: Int, maxSeqLength: Int): Iterable[(String, Int)] = {
     // count function separated to isolate the mutable map
@@ -39,6 +34,11 @@ trait CountSeq {
         .reverse
         .toArray
     )
+  }
+
+  private val sortOrder: Ordering[(String, Int)] = {
+    case ((_, count1), (_, count2)) =>
+      Integer.compare(count1, count2)
   }
 
 }
